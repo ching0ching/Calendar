@@ -1,0 +1,360 @@
+:root {
+    --green: #2a7c3a;
+    --gold: #ffd700;
+    --bg: #f7f7f7;
+    --text: #222;
+    --header-bg: #fff;
+    --card-bg: #fff;
+    --accent: #e0e0e0;
+
+    --dark-bg: #181818;
+    --dark-header: #232323;
+    --dark-card: #222;
+    --dark-text: #eee;
+    --dark-accent: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+}
+
+body.dark {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--header-bg);
+    padding: 10px 20px;
+    border-bottom: 3px solid var(--green);
+}
+body.dark .app-header {
+    background: var(--dark-header);
+}
+
+.logo {
+    height: 42px;
+    margin-right: 12px;
+}
+
+.logo-large {
+    height: 90px;
+    margin-bottom: 16px;
+}
+
+h1 {
+    flex: 1;
+    color: var(--green);
+    margin: 0 10px;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+#welcome-screen.hidden {
+    display: none;
+}
+
+#calendar-app.hidden {
+    display: none;
+}
+
+#toggle-theme {
+    background: none;
+    border: none;
+    font-size: 1.4em;
+    cursor: pointer;
+    color: var(--gold);
+}
+
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 18px 0 8px 0;
+}
+
+.calendar-controls button {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.calendar-controls button:hover {
+    background: var(--gold);
+    color: var(--green);
+}
+
+.admin-btn {
+    margin-left: 20px;
+    background: var(--gold);
+    color: var(--green);
+}
+
+.admin-btn.hidden {
+    display: none;
+}
+
+#month-year {
+    min-width: 120px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--green);
+}
+
+#calendar {
+    max-width: 390px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #0002;
+    padding: 10px;
+}
+
+body.dark #calendar {
+    background: var(--dark-card);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.day-header, .day-cell {
+    padding: 8px 0;
+    text-align: center;
+}
+
+.day-header {
+    font-weight: bold;
+    color: var(--gold);
+    background: var(--green);
+}
+
+.day-cell {
+    background: var(--accent);
+    cursor: pointer;
+    min-height: 44px;
+    border-radius: 6px;
+    position: relative;
+    font-size: 1.07em;
+    transition: background 0.2s;
+}
+
+body.dark .day-cell {
+    background: var(--dark-accent);
+}
+
+.day-cell.today {
+    border: 2px solid rgb(115, 157, 115);
+    font-weight: bold;
+    color: gold;
+    background: var(--green);
+}
+
+.day-cell.has-event {
+    background: var(--gold);
+    color: var(--green);
+    font-weight: bold;
+}
+
+.day-cell.holiday {
+    background: #e0ffd7;
+    color: var(--green);
+    border: 1.5px solid #6edc7c;
+}
+
+.day-cell.birthday {
+    background: #fefed0;
+    color: rgb(193, 152, 4);
+    font-weight: bold;
+    border: 1.5px solid var(--gold);
+}
+
+.day-cell.kaarawan {
+    background: #ffe5eb;
+    color: #d6245a;
+    border: 1.5px solid #e67aac;
+}
+
+.day-cell:hover {
+    filter: brightness(0.97);
+    outline: 2px solid var(--green);
+}
+
+.day-cell.disabled {
+    background: #fafafa;
+    color: #bbb;
+    cursor: default;
+    border: none;
+}
+
+.day-cell.userevent {
+    background: #e0ffd7;
+    color: var(--green);
+    border: 1.5px solid #6edc7c;
+}
+
+@media (max-width: 600px) {
+    #calendar {
+        max-width: 100vw;
+        font-size: 0.97em;
+        padding: 2px;
+    }
+    .calendar-grid {
+        gap: 1px;
+    }
+}
+
+.notification {
+    display: none;
+    background: var(--gold);
+    color: var(--green);
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.notification.show {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #0006;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 110;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #fff;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 26px 18px 18px 18px;
+    min-width: 250px;
+    max-width: 93vw;
+    box-shadow: 0 4px 24px #0003;
+    position: relative;
+}
+
+body.dark .modal-content {
+    background: var(--dark-card);
+    color: var(--dark-text);
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#event-list {
+    margin: 18px 0 8px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+#event-list li {
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--accent);
+    padding: 6px 9px;
+    border-radius: 5px;
+}
+
+body.dark #event-list li {
+    background: var(--dark-accent);
+}
+
+#event-form {
+    display: flex;
+    gap: 7px;
+    margin: 10px 0 3px 0;
+}
+
+#event-title {
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--green);
+    font-size: 1em;
+}
+
+#save-event {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 5px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-event-btn {
+    background: var(--gold);
+    color: var(--green);
+    border: none;
+    padding: 6px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.admin-only {
+    display: none;
+}
+
+.admin-logged .admin-only {
+    display: inline-block;
+}
+
+footer {
+    text-align: center;
+    margin: 32px 0 8px 0;
+    font-size: 0.97em;
+    color: #888;
+}
+
+footer a {
+    color: var(--green);
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+footer a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
