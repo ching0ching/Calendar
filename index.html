@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Event Calendar</title>
+    <link rel="stylesheet" href="rospogi.css">
+    <link rel="icon" href="no bg.png">
+</head>
+<body>
+    <div class="app-header">
+        <img src="no bg.png" alt="App Logo" class="logo">
+        <h1>School Event Calendar</h1>
+        <button id="toggle-theme">🌙</button>
+    </div>
+    <div id="notification" class="notification"></div>
+    <div id="welcome-screen" class="welcome-screen">
+        <img src="no bg.png" alt="App Logo" class="logo-large">
+        <h2>Welcome!</h2>
+        <button class="slide-button" id="enter-calendar" style="background-color: darkgreen; color: white; border-radius: 5px; border-color: goldenrod; padding: 10px; border-style:none; font-weight: bolder;">Enter Calendar</button>
+    </div>
+    <div id="calendar-app" class="hidden">
+        <div class="calendar-controls">
+            <button id="prev-month">&lt;</button>
+            <span id="month-year"></span>
+            <button id="next-month">&gt;</button>
+            <button id="admin-login-btn" class="admin-btn">Admin Login</button>
+            <button id="admin-logout-btn" class="admin-btn hidden">Logout</button>
+        </div>
+        <div id="calendar"></div>
+    </div>
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-date"></h3>
+            <ul id="event-list"></ul>
+            <form id="event-form" class="hidden">
+                <input type="text" id="event-title" placeholder="Event Title" required autocomplete="off">
+                <button type="submit" id="save-event">Save</button>
+            </form>
+            <button id="add-event-btn" class="admin-only hidden">Add Event</button>
+        </div>
+    </div>
+    <div id="admin-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Admin Login</h3>
+            <form id="admin-form" autocomplete="off">
+                <input type="password" id="admin-password" placeholder="Enter password" required autocomplete="off">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>
+            Powered by <strong>TWA</strong> | 
+            <a href="https://www.facebook.com/alyssaeunice.pacer">Contact Admin</a> | 
+            <a href="https://www.facebook.com/AcademiciansOfficial" target="_blank">Facebook</a>
+        </p>
+        <p>
+            <small>&copy; 2025-2026 TWA Senior High School Event Calendar</small>
+        </p>
+    </footer>
+    <script src="kentpogi.js"></script>
+</body>
+</html>
